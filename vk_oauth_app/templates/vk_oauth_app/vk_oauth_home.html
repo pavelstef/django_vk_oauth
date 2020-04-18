@@ -1,0 +1,26 @@
+{% extends "vk_oauth_app/vk_oauth_base.html" %}
+{% load static %}
+
+{% block title %}VK Oauth: Home{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <div class="container">
+        <div style="margin-top:35%">
+            {% if full_name and friends %}
+                <div class="card-header text-center">
+                    <h5 class="card-title">Привет, {{ full_name.first_name }} {{ full_name.last_name }}! Добо пожаловать в это тестовое приложение.</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Ваши {{ friends.items|length }} случайных друзей: </p>
+                    {% for friend in friends.items %}
+                        <div>{{ forloop.counter }}) {{ friend.first_name }} {{ friend.last_name }} из города {{ friend.city.title }}</div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">Возникли проблемы с итеграцией с VK. Повторите попытку позднее.</div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
