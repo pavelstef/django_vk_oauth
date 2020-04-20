@@ -136,6 +136,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/vk_oauth/home/'
 
+SESSION_COOKIE_AGE = 86400  # It should be exactly the same as the time of live of VK token.
+
 
 # VK Oauth settings
 SOCIAL_AUTH_VK_OAUTH2_KEY = env.str('SOCIAL_AUTH_VK_OAUTH2_KEY', default='7417209')
