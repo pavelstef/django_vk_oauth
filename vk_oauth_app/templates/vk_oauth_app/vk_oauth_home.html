@@ -14,7 +14,12 @@
                 <div class="card-body">
                     <p class="card-text">Ваши {{ friends.items|length }} случайных друзей: </p>
                     {% for friend in friends.items %}
-                        <div>{{ forloop.counter }}) {{ friend.first_name }} {{ friend.last_name }} из города {{ friend.city.title }}</div>
+                         <div>
+                            {{ forloop.counter }}) {{ friend.first_name }} {{ friend.last_name }}
+                            {% if friend.city %}
+                                из города {{ friend.city.title }}
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
             {% else %}
